@@ -9,9 +9,13 @@
 
 <body>
   <h1>Chat App</h1>
-  <button id="incrementBtn">+1</button>
   <main>
-    <input type="text" name="" id="">
+    <form id="message-form">
+      <textarea name="bodyMsg" id="bodyMsg" cols="30" rows="10"></textarea>
+      <br>
+      <button id="sendBtn">Send</button>
+    </form>
+    <button id="sendLocation">Send Location</button>
   </main>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/js/chat.js"></script>
