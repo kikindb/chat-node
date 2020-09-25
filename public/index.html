@@ -8,8 +8,12 @@
 </head>
 
 <body>
-  <h1>Chat App</h1>
+  <header>
+    <h1>Chat App</h1>
+  </header>
   <main>
+    <section id="msgs"></section>
+
     <form id="msg-form">
       <textarea name="bodyMsg" id="bodyMsg" cols="30" rows="10"></textarea>
       <br>
@@ -17,6 +21,28 @@
     </form>
     <button id="sendLocation">Send Location</button>
   </main>
+
+  <script id="msg-tmpl" type="text/html">
+    <div>
+      <p>{{createdAt}} - {{message}}</p>
+    </div>
+  </script>
+
+  <script id="loc-msg-tmpl" type="text/html">
+    <div>
+      <a href="{{locURL}}" target="_blank">{{createdAt}} - My current location</a>
+    </div>
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.0.1/mustache.min.js"
+    integrity="sha512-6AXIWogbKpsHvoZJrJtHpIYES4wP8czSj0zk7ZfwOYS8GWYFNSykwdfapt7yQc4ikZytemBu+QyVObzBHJMwYg=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"
+    integrity="sha512-Izh34nqeeR7/nwthfeE0SI3c8uhFSnqxV0sI9TvTcXiFJkMd6fB644O64BRq2P/LA/+7eRvCw4GmLsXksyTHBg=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js"
+    integrity="sha512-BHtomM5XDcUy7tDNcrcX1Eh0RogdWiMdXl3wJcKB3PFekXb3l5aDzymaTher61u6vEZySnoC/SAj2Y/p918Y3w=="
+    crossorigin="anonymous"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/js/chat.js"></script>
 </body>
