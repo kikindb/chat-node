@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/styles.css">
   <title>Chat App</title>
 </head>
 
@@ -11,26 +12,29 @@
   <header>
     <h1>Chat App</h1>
   </header>
-  <main>
+  <main class="chat-container">
     <section id="msgs"></section>
 
     <form id="msg-form">
-      <textarea name="bodyMsg" id="bodyMsg" cols="30" rows="10"></textarea>
+      <textarea name="bodyMsg" id="bodyMsg" cols="30" rows="5"></textarea>
       <br>
-      <button id="sendBtn">Send</button>
+      <button id="sendBtn" class="btn">Send</button>
     </form>
-    <button id="sendLocation">Send Location</button>
+    <button id="sendLocation" class="btn">Send Location</button>
   </main>
 
   <script id="msg-tmpl" type="text/html">
-    <div>
+    <div class="msg-container">
       <p>{{createdAt}} - {{message}}</p>
     </div>
   </script>
 
   <script id="loc-msg-tmpl" type="text/html">
-    <div>
-      <a href="{{locURL}}" target="_blank">{{createdAt}} - My current location</a>
+    <div class="msg-container">
+      <p>
+        {{createdAt}} - 
+        <a href="{{locURL}}" target="_blank">My current location</a>
+      </p>
     </div>
   </script>
 

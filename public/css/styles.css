@@ -1,0 +1,82 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #595959;
+}
+
+h1 {
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 3em;
+  color: white;
+}
+
+a:link, a:visited {
+  color: #d0eeff;
+}
+
+.chat-container {
+  margin: 0 auto;
+  max-width: 720px;
+  border-radius: 0.5rem;
+  padding: 1em;
+  box-shadow: 0 0 16px #9e9e9e;
+  background-color: white;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  background-color: #0070ac;
+  border: none;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  color: white;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  transition: all 100ms ease-in-out;
+}
+
+.btn:hover {
+  background-color: #015785;
+}
+
+.btn:disabled {
+  background-color: #9e9e9e;
+  cursor: not-allowed;
+}
+
+textarea {
+  border: none;
+  width: 100%;
+  box-shadow: 0 0 8px #9e9e9e;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+#msgs {
+  margin: 0.5rem 0;
+  width: 100%;
+  height: 33vh;
+  overflow-y: scroll;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #015785;
+  color: white;
+  scroll-behavior: smooth;
+}
+
+#msgs p {
+  width: 100%;
+  word-break: break-all;
+}
+
+.msg-container:not(:first-child) {
+  margin: 0.5rem 0;
+}
