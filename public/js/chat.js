@@ -38,6 +38,7 @@ $sendLocationBtn.addEventListener('click', () => {
     return alert('Geolocation is not supported by your Browser');
 
   $sendLocationBtn.setAttribute('disabled', 'disabled');
+
   navigator.geolocation.getCurrentPosition((position) => {
     console.log('Sending Location...');
     socket.emit('sendLocation', {
