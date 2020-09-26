@@ -18,7 +18,7 @@ h1 {
 }
 
 a:link, a:visited {
-  color: #d0eeff;
+  color: #002c46;
 }
 
 .chat-container {
@@ -68,7 +68,7 @@ textarea {
   padding: 0.5rem;
   border-radius: 0.5rem;
   background-color: #015785;
-  color: white;
+  color: #4a4a4a;
   scroll-behavior: smooth;
 }
 
@@ -77,6 +77,30 @@ textarea {
   word-break: break-all;
 }
 
+.msg-container {
+  width: 100%;
+  background-color: #93b7cb;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
 .msg-container:not(:first-child) {
   margin: 0.5rem 0;
+}
+
+.loc-link {
+  display: block;
+}
+
+.msg-title {
+  margin-bottom: 0.5rem;
+}
+
+.msg-title strong {
+  color: #002c46;
+}
+
+.msg-title .msg-date {
+  font-size: 0.85em;
+  color: #4a4a4a;
 }
