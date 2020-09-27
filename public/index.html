@@ -5,18 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/styles.css">
-  <title>Chat App</title>
+  <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
+  <title>Enrique's Chat App</title>
 </head>
 
 <body>
   <header>
-    <h1>Chat App</h1>
+    <h1>Enrique's Chat App</h1>
   </header>
-  <main>
-    <form action="/chat.html">
+  <main class="chat-intro-container">
+    <form class="chat-intro-form" action="/chat.html">
       <input type="text" name="username" placeholder="Display name" required>
-      <input type="text" name="room" placeholder="Room" required>
-      <button>Submit</button>
+      <select name="room" id="room" required>
+        <option value="general">General</option>
+        <option value="technology">Technology</option>
+        <option value="gossip">Gossip</option>
+        <option value="food">Food</option>
+        <option value="pets">Pets</option>
+        <option value="art">Art</option>
+        <option value="business">Business</option>
+        <option value="stocks">Stocks</option>
+        <option value="family">Family</option>
+        <option value="coding">Coding</option>
+        <option value="js">Javascript</option>
+      </select>
+      <button class="btn">Enter</button>
     </form>
   </main>
 </body>

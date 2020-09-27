@@ -21,13 +21,18 @@ a:link, a:visited {
   color: #002c46;
 }
 
-.chat-container {
+.chat-container,
+.chat-intro-container {
   margin: 0 auto;
-  max-width: 720px;
+  max-width: 792px;
   border-radius: 0.5rem;
   padding: 1em;
   box-shadow: 0 0 16px #9e9e9e;
   background-color: white;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .btn {
@@ -52,7 +57,7 @@ a:link, a:visited {
   cursor: not-allowed;
 }
 
-textarea {
+input, select {
   border: none;
   width: 100%;
   box-shadow: 0 0 8px #9e9e9e;
@@ -63,13 +68,15 @@ textarea {
 #msgs {
   margin: 0.5rem 0;
   width: 100%;
-  height: 33vh;
+  height: 50vh;
   overflow-y: scroll;
   padding: 0.5rem;
   border-radius: 0.5rem;
   background-color: #015785;
   color: #4a4a4a;
   scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 #msgs p {
@@ -103,4 +110,63 @@ textarea {
 .msg-title .msg-date {
   font-size: 0.85em;
   color: #4a4a4a;
+}
+
+#room-bar {
+  width: 25%;
+}
+
+.chat-item {
+  width: 75%;
+}
+
+.room-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.users-list-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.users-list {
+  list-style: none;
+  text-transform: capitalize;
+}
+
+.users-list-item {
+  margin-bottom: 0.33rem;
+}
+
+.chat-intro-container {
+  height: 50vh;
+}
+
+.chat-intro-form {
+  margin: auto;
+}
+
+.chat-intro-form input, 
+.chat-intro-form select {
+  margin-bottom: 1rem;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 425px) {
+  #room-bar {
+    width: 100%;
+  }
+  .room-title {
+    text-align: center;
+  }
+  .users-list {
+    column-count: 4;
+  }
+  .chat-item {
+    width: 100%;
+  }
 }

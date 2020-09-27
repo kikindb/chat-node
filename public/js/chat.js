@@ -2,17 +2,39 @@ const socket = io();
 
 // Elements
 const $msgForm = document.querySelector('#msg-form');
-const $msgFormTextArea = document.getElementById('bodyMsg');
+const $msgFormInput = document.getElementById('bodyMsg');
 const $msgFormBtn = $msgForm.querySelector('button');
 const $sendLocationBtn = document.querySelector('#sendLocation');
 const $messages = document.querySelector('#msgs');
+const $roomBar = document.querySelector('#room-bar');
 
 // Templates
 const $msgTemplate = document.querySelector('#msg-tmpl').innerHTML;
 const $locMsgTemplate = document.querySelector('#loc-msg-tmpl').innerHTML;
+const $usersListTemplate = document.querySelector('#users-list-tmpl').innerHTML;
 
 // Options
 const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true });
+
+window.addEventListener('load', (e) => {
+  $msgFormInput.focus();
+});
+
+const autoscroll = () => {
+  const $lastMsg = $messages.lastElementChild;
+  const lastMsgStyles = getComputedStyle($lastMsg);
+  const lastMsgMargin = parseInt(lastMsgStyles.marginBottom);
+  const lastMsgHeight = $lastMsg.offsetHeight + lastMsgMargin;
+
+  const visibleHeight = $messages.offsetHeight;
+
+  const containerHeight = $messages.scrollHeight;
+
+  const scrolOffset = $messages.scrollTop + visibleHeight;
+
+  if (containerHeight - lastMsgHeight <= scrolOffset)
+    $messages.scrollTop = $messages.scrollHeight;
+};
 
 socket.on('message', (message) => {
   console.log(message);
@@ -22,6 +44,7 @@ socket.on('message', (message) => {
     createdAt: moment(message.createdAt).format('h:mm a')
   });
   $messages.insertAdjacentHTML('beforeend', html);
+  autoscroll();
 });
 
 socket.on('locationMessage', (locURL) => {
@@ -32,11 +55,15 @@ socket.on('locationMessage', (locURL) => {
     createdAt: moment(locURL.createdAt).format('h:mm a')
   });
   $messages.insertAdjacentHTML('beforeend', html);
+  autoscroll();
 });
 
 socket.on('roomData', ({ room, users }) => {
-  console.log(room);
-  console.log(users);
+  const html = Mustache.render($usersListTemplate, {
+    users,
+    room
+  });
+  $roomBar.innerHTML = html;
 });
 
 $msgForm.addEventListener('submit', (e) => {
@@ -50,8 +77,8 @@ $msgForm.addEventListener('submit', (e) => {
 
   socket.emit('sendMsg', bodyMsg, (error) => {
 
-    $msgFormTextArea.value = '';
-    $msgFormTextArea.focus();
+    $msgFormInput.value = '';
+    $msgFormInput.focus();
     $msgFormBtn.removeAttribute('disabled');
 
     if (error) return console.log(error);
